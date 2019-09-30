@@ -39,8 +39,8 @@ To run tests, just enter the following command:
 ## To do
 
 * ~~add options and non-interactive mode~~
-* output to raw html
-* output to markdown
+* ~~output to raw HTML~~
+* output to Markdown
 * output to AsciiDoc
 
 ## Credits

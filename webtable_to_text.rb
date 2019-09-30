@@ -7,58 +7,6 @@ require 'optparse'
 
 require_relative 'libhtmltable.rb'
 
-def print_table(options, table_string)
-  if options[:tsv]
-    table_to_tsv(table_string)
-  elsif options[:csv]
-    table_to_csv(table_string)
-  elsif options[:markdown]
-  #   table_to_md(table_string)
-  else
-    table_to_tsv(table_string)
-  end
-end
-
-def single_table(tables, options, numstring)
-  num = numstring.to_i
-
-  if num > tables.length
-    abort("  Table number out of range")
-  end
-
-  if options[:interactive]
-    puts "  Converting table #{numstring}..."
-  else
-    puts "==Table ##{numstring}=="
-  end
-
-  table_string = tables[num - 1].inner_html
-
-  print_table(options, table_string)
-end
-
-def multiple_tables(tables, options, numstring)
-  num_array = numstring.split(",")
-  num_array.each do |n|
-    if !n.match(/\d/) then next end
-    single_table(tables, options, n)
-    puts
-  end
-  exit
-end
-
-def all_tables(tables, options)
-  counter = 1
-  tables.each do |table|
-    table_string = table.inner_html
-    puts "==Table ##{counter.to_s}=="
-    print_table(options, table_string)
-    puts
-    counter += 1
-  end
-  exit
-end
-
 options = {}
 OptionParser.new do |opts|
   opts.banner = "  Usage: webtable_to_text.rb [options]"
@@ -68,9 +16,10 @@ OptionParser.new do |opts|
   opts.on("-c", "--csv", "Output in CSV / comma separated values format") { options[:csv] = true }
   opts.on("-f", "--file FILE", "Specify HTML file as source for extracting tables") { |v| options[:file] = v }
   opts.on("-i", "--interactive", "Interactive mode") { options[:interactive] = true }
-  opts.on("-t", "--tsv", "Output in TSV / tab separated values format (default)") { |v| options[:tsv] = v }
+  opts.on("-t", "--tsv", "Output in TSV / tab separated values format (default)") { options[:tsv] = true }
   opts.on("-m", "--markdown", "Output in markdown format") { options[:markdown] = true }
   opts.on("-o", "--output FILE", "Specify output file (default: output to STDOUT)") { |v| options[:output] = v }
+  opts.on("-r", "--raw", "Output raw table HTML") { options[:html] = true }
   opts.on("-u", "--url URL", "Specify URL as source for extracting tables") { |v| options[:url] = v }
 
 end.parse!
