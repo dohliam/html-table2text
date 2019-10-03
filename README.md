@@ -10,13 +10,29 @@ This script relies on Nokogiri to parse HTML. You can install it with:
 
 ## Usage
 
-To extract tables from an arbitrary URL, just run the `webtable_to_text` script with the URL as an argument:
+To extract tables from an arbitrary URL, just run the `webtable_to_text` script with the `-u` option followed by the URL:
 
-    ./webtable_to_text.rb [URL]
+    ./webtable_to_text.rb -u [URL]
 
 For example:
 
-    ./webtable_to_text.rb "https://en.wikipedia.org/wiki/Gabon"
+    ./webtable_to_text.rb -u "https://en.wikipedia.org/wiki/Gabon"
+
+This will print out all the tables found on the specified page.
+
+To output a specific table only, use the `n` option, followed by the number of the table:
+
+    ./webtable_to_text.rb -u "https://en.wikipedia.org/wiki/Gabon" -n 3
+
+The script also works with local files, using the `f` option, e.g.:
+
+    ./webtable_to_text.rb -f some_file.html
+
+### Interactive mode
+
+To use interactive mode, add the `-i` option to the command and specify a URL or file as normal. For example:
+
+    ./webtable_to_text.rb -u "https://en.wikipedia.org/wiki/Gabon" -i
 
 This will print a message with the total number of tables found in the document. If you enter a number at the prompt, it will print the corresponding table. Otherwise, pressing ENTER or RETURN will print all tables found.
 
@@ -27,10 +43,6 @@ For example, pressing `3` will print something like the following:
     1950	0.5 
     2000	1.2 
     2016	2
-
-The script also works with local files, e.g.:
-
-    ./webtable_to_text.rb some_file.html
 
 To run tests, just enter the following command:
 
