@@ -5,6 +5,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'optparse'
 require 'reverse_markdown'
+require 'reverse_asciidoctor'
 
 require_relative 'libhtmltable.rb'
 
@@ -12,7 +13,8 @@ options = {}
 OptionParser.new do |opts|
   opts.banner = "  Usage: webtable_to_text.rb [options]"
 
-  opts.on("-a", "--all", "Print all tables found on the specified page") { options[:all] = true }
+  opts.on("-A", "--all", "Print all tables found on the specified page") { options[:all] = true }
+  opts.on("-a", "--asciidoc", "Output in asciidoc/asciidoctor format") { options[:asciidoc] = true }
   opts.on("-c", "--csv", "Output in CSV / comma separated values format") { options[:csv] = true }
   opts.on("-f", "--file FILE", "Specify HTML input file as source for extracting tables") { |v| options[:file] = v }
   opts.on("-i", "--interactive", "Interactive mode") { options[:interactive] = true }

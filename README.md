@@ -12,6 +12,10 @@ Markdown conversion uses [reverse_markdown](https://github.com/xijo/reverse_mark
 
     gem install reverse_markdown
 
+Asciidoctor conversion uses the [reverse_asciidoctor](https://github.com/metanorma/reverse_adoc) gem:
+
+    gem install reverse_asciidoctor
+
 ## Usage
 
 To extract tables from an arbitrary URL, just run the `webtable_to_text` script with the `-u` option followed by the URL:
@@ -56,7 +60,8 @@ To run tests, just enter the following command:
 
 The following options are available:
 
-* `-a`, `--all`: _Print all tables found on the specified page_
+* `-A`, `--all`: _Print all tables found on the specified page_
+* `-a`, `--asciidoc`: _Output in asciidoc/asciidoctor format_
 * `-c`, `--csv`: _Output in CSV / comma separated values format_
 * `-f`, `--file FILE`: _Specify HTML input file as source for extracting tables_
 * `-h`, `--help`: _Print help text_
@@ -73,7 +78,7 @@ The following options are available:
 * ~~add options and non-interactive mode~~
 * ~~output to raw HTML~~
 * ~~output to Markdown~~
-* output to AsciiDoc
+* ~~output to AsciiDoc~~
 
 ## Credits
 

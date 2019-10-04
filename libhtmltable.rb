@@ -27,6 +27,8 @@ def print_table(options, table_string)
     table_to_csv(table_string)
   elsif options[:markdown]
     puts ReverseMarkdown.convert(table_string)
+  elsif options[:asciidoc]
+    puts ReverseAsciidoctor.convert(table_string)
   elsif options[:html]
     puts table_string
   else
