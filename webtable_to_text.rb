@@ -13,14 +13,14 @@ OptionParser.new do |opts|
   opts.banner = "  Usage: webtable_to_text.rb [options]"
 
   opts.on("-a", "--all", "Print all tables found on the specified page") { options[:all] = true }
-  opts.on("-n", "--number NUM", "Print specific table number only; separate multiple numbers with commas") { |v| options[:number] = v }
   opts.on("-c", "--csv", "Output in CSV / comma separated values format") { options[:csv] = true }
   opts.on("-f", "--file FILE", "Specify HTML input file as source for extracting tables") { |v| options[:file] = v }
   opts.on("-i", "--interactive", "Interactive mode") { options[:interactive] = true }
-  opts.on("-t", "--tsv", "Output in TSV / tab separated values format (default)") { options[:tsv] = true }
   opts.on("-m", "--markdown", "Output in markdown format") { options[:markdown] = true }
+  opts.on("-n", "--number NUM", "Print specific table number only; separate multiple numbers with commas") { |v| options[:number] = v }
   opts.on("-o", "--output FILE", "Specify output file (default: output to STDOUT)") { |v| options[:output] = v }
   opts.on("-r", "--raw", "Output raw table HTML") { options[:html] = true }
+  opts.on("-t", "--tsv", "Output in TSV / tab separated values format (default)") { options[:tsv] = true }
   opts.on("-u", "--url URL", "Specify URL as source for extracting tables") { |v| options[:url] = v }
 
 end.parse!
