@@ -1,4 +1,4 @@
-# HTML Table to Text - Script for extracting and converting HTML tables
+# HTML Table to Text - Extract and convert HTML tables to plain text formats
 
 This is a simple (optionally interactive) script that can extract any or all tables from a given HTML file or URL. The data can be output to CSV (comma-separated values), TSV (tab-separated values), Markdown, Asciidoc, or raw HTML.
 
