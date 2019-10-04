@@ -59,7 +59,7 @@ The following options are available:
 * `-a`, `--all`: _Print all tables found on the specified page_
 * `-c`, `--csv`: _Output in CSV / comma separated values format_
 * `-f`, `--file FILE`: _Specify HTML input file as source for extracting tables_
-* `-h`: _Print help text_
+* `-h`, `--help`: _Print help text_
 * `-i`, `--interactive`: _Interactive mode_
 * `-m`, `--markdown`: _Output in markdown format_
 * `-n`, `--number NUM`: _Print specific table number only; separate multiple numbers with commas_
