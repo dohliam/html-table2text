@@ -26,7 +26,7 @@ def print_table(options, table_string)
   elsif options[:csv]
     table_to_csv(table_string)
   elsif options[:markdown]
-  #   table_to_md(table_string)
+    puts ReverseMarkdown.convert(table_string)
   elsif options[:html]
     puts table_string
   else
