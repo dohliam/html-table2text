@@ -82,7 +82,7 @@ The following options are available:
 
 ## Credits
 
-* Table extaction to CSV based on [this Stack Overflow answer](https://stackoverflow.com/a/1403325) by user audiodude.
+* Table extraction to CSV based on [this Stack Overflow answer](https://stackoverflow.com/a/1403325) by user audiodude.
 
 ## License
 
