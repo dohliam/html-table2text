@@ -5,7 +5,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'optparse'
 require 'reverse_markdown'
-require 'reverse_asciidoctor'
+require 'reverse_adoc'
 
 require_relative 'libhtmltable.rb'
 

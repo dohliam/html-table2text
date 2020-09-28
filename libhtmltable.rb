@@ -28,7 +28,7 @@ def print_table(options, table_string)
   elsif options[:markdown]
     puts ReverseMarkdown.convert(table_string)
   elsif options[:asciidoc]
-    puts ReverseAsciidoctor.convert(table_string)
+    puts ReverseAdoc.convert(table_string)
   elsif options[:html]
     puts table_string
   else

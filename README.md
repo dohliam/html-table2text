@@ -12,9 +12,9 @@ Markdown conversion uses [reverse_markdown](https://github.com/xijo/reverse_mark
 
     gem install reverse_markdown
 
-Asciidoctor conversion uses the [reverse_asciidoctor](https://github.com/metanorma/reverse_adoc) gem:
+Asciidoc conversion uses the [reverse_adoc](https://github.com/metanorma/reverse_adoc) gem:
 
-    gem install reverse_asciidoctor
+    gem install reverse_adoc
 
 ## Usage
 
