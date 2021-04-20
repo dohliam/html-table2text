@@ -1,6 +1,7 @@
 #!/usr/bin/ruby -KuU
 # encoding: utf-8
 
+require 'cgi'
 require 'nokogiri'
 require 'open-uri'
 require 'optparse'
@@ -34,7 +35,8 @@ file = options[:file]
 
 if url
   source_location = url
-  source_content = open(URI.encode(url)).read
+  escaped = escape_url(url)
+  source_content = URI.open(escaped).read
 elsif file
   source_location = file
   source_content = File.read(file)

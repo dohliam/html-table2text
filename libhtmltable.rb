@@ -75,3 +75,10 @@ def all_tables(tables, options)
   end
   exit
 end
+
+def escape_url(url)
+  if url.match(/%/)
+    url = CGI.unescape(url)
+  end
+  url.gsub(/(.)/) { |u| u.match(URI::UNSAFE) ? CGI.escape(u) : u }
+end
