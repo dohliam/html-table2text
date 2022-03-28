@@ -1,4 +1,4 @@
-#!/usr/bin/ruby -KuU
+#!/usr/bin/env ruby
 # encoding: utf-8
 
 require 'cgi'
