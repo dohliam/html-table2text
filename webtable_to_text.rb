@@ -11,12 +11,19 @@ require_relative 'libhtmltable.rb'
 
 options = {}
 OptionParser.new do |opts|
-  opts.banner = "  Usage: webtable_to_text.rb [options]"
+  opts.banner = <<BANNER
+ usage:
+   webtable_to_text.rb [options] [-f FILE | -u URL]
+   curl [options] URL | webtable_to_text.rb
+   wget -O- [options] URL | webtable_to_text.rb
+
+ options:
+BANNER
 
   opts.on("-A", "--all", "Print all tables found on the specified page") { options[:all] = true }
   opts.on("-a", "--asciidoc", "Output in asciidoc/asciidoctor format") { options[:asciidoc] = true }
   opts.on("-c", "--csv", "Output in CSV / comma separated values format") { options[:csv] = true }
-  opts.on("-f", "--file FILE", "Specify HTML input file as source for extracting tables") { |v| options[:file] = v }
+  opts.on("-f", "--file FILE", "Specify HTML input file as source for extracting tables; use '-' to read from stdin") { |v| options[:file] = v }
   opts.on("-i", "--interactive", "Interactive mode") { options[:interactive] = true }
   opts.on("-m", "--markdown", "Output in markdown format") { options[:markdown] = true }
   opts.on("-n", "--number NUM", "Print specific table number only; separate multiple numbers with commas") { |v| options[:number] = v }
@@ -27,8 +34,6 @@ OptionParser.new do |opts|
 
 end.parse!
 
-source = ""
-
 url = options[:url]
 file = options[:file]
 
@@ -38,9 +43,15 @@ if url
   source_content = URI.open(escaped).read
 elsif file
   source_location = file
-  source_content = File.read(file)
+  if file == "-"
+    # h/t: https://stackoverflow.com/a/273841
+    source_content = ARGF.read
+  else
+    source_content = File.read(file)
+  end
 else
-  abort("  Please provide a source file or URL as input")
+  #abort("  Please provide a source file or URL as input")
+  source_content = ARGF.read
 end
 
 doc = Nokogiri::HTML(source_content)
