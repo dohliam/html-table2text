@@ -50,7 +50,13 @@ elsif file
     source_content = File.read(file)
   end
 else
-  #abort("  Please provide a source file or URL as input")
+  if $stdin.isatty
+    abort("  Please provide a source file or URL as input. See '--help'.")
+  end
+  if options[:interactive]
+    abort("  Interactive mode not supported when reading from a pipe.")
+  end
+  source_location = '(stdin)'
   source_content = ARGF.read
 end
 
@@ -60,7 +66,7 @@ tables = doc.xpath('//table')
 len = tables.length
 
 if len < 1
-  abort("  No tables found in page at #{source_location}")
+  abort("  No tables found in page at #{source_location}.")
 end
 
 numstring = "all"
